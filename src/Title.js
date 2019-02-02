@@ -1,20 +1,46 @@
 import React, { Component } from "react";
 import "./Title.css";
+import {setData} from "./Auth/Push"
+// const firebase = require("firebase");
+// // Required for side-effects
+// require("firebase/firestore");
+
+// var config = {
+//   apiKey: "AIzaSyAjt_ff90T_Ch92pGg6g_sAtJkakCgI5WA",
+//   authDomain: "nsuslideshare.firebaseapp.com",
+//   projectId: "nsuslideshare"
+// };
+
+// firebase.initializeApp(config);
+// var db = firebase.firestore();
+
+// db.settings({
+//   timestampsInSnapshots: true
+// });
 
 class Title extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      title: "Test",
-      name: "MD Shoaib Mehedi",
-      mail: "shoiab.mehedi@gmail.com",
-      phone: "01725991536",
-      designation: "BAAL",
-      department: "RokkhiWeb",
+      title: "",
+      name: "",
+      mail: "",
+      phone: "",
+      designation: "",
+      department: "",
       isInput: false
     };
   }
+
+  postData = {
+  title: "haha",
+  name: "hehe",
+  mail: "hfghfdgh",
+  phone: "0011",
+  designation: "fghfg",
+  department: "fhdfhdfhdfgh",
+};
 
   editHandler() {
     this.setState({
@@ -62,6 +88,11 @@ class Title extends Component {
 
   keyPressHandler(event) {
     if (event.key === "Enter") {
+      // this.getData();
+      // this.setData();
+
+      console.log(this.postData);
+      setData(this.postData);
       this.setState({
         ...this.state,
         isInput: false
@@ -69,12 +100,12 @@ class Title extends Component {
     }
   }
 
-//   blurHandler(event) {
-//     this.setState({
-//       ...this.state,
-//       isInput: false
-//     });
-//   }
+  //   blurHandler(event) {
+  //     this.setState({
+  //       ...this.state,
+  //       isInput: false
+  //     });
+  //   }
 
   render() {
     let output = null;
@@ -88,6 +119,7 @@ class Title extends Component {
             onKeyPress={event => this.keyPressHandler(event)}
             // onBlur={event => this.blurHandler(event)}
             type="text"
+            placeholder="Title"
             value={this.state.title}
           />
           <input
@@ -96,6 +128,7 @@ class Title extends Component {
             onKeyPress={event => this.keyPressHandler(event)}
             // onBlur={event => this.blurHandler(event)}
             type="text"
+            placeholder="Name"
             value={this.state.name}
           />
           <input
@@ -104,6 +137,7 @@ class Title extends Component {
             onKeyPress={event => this.keyPressHandler(event)}
             // onBlur={event => this.blurHandler(event)}
             type="text"
+            placeholder="Email"
             value={this.state.mail}
           />
           <input
@@ -112,6 +146,7 @@ class Title extends Component {
             onKeyPress={event => this.keyPressHandler(event)}
             // onBlur={event => this.blurHandler(event)}
             type="text"
+            placeholder="Phone"
             value={this.state.phone}
           />
           <input
@@ -120,6 +155,7 @@ class Title extends Component {
             onKeyPress={event => this.keyPressHandler(event)}
             // onBlur={event => this.blurHandler(event)}
             type="text"
+            placeholder="Designation"
             value={this.state.designation}
           />
           <input
@@ -128,8 +164,15 @@ class Title extends Component {
             onKeyPress={event => this.keyPressHandler(event)}
             // onBlur={event => this.blurHandler(event)}
             type="text"
+            placeholder="Department"
             value={this.state.department}
           />
+          <span
+            onClick={() => this.postData()}
+            className="ml-auto edit-icon"
+          >
+            <i className="fas fa-pencil-alt" />
+          </span>
         </div>
       );
     } else {

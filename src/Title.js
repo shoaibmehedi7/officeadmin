@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Title.css";
 import {setData} from "./Auth/Push"
+import {removePeople} from "./Modifier/EmployeeStateModifier"
 // const firebase = require("firebase");
 // // Required for side-effects
 // require("firebase/firestore");
@@ -52,7 +53,7 @@ class Title extends Component {
   titleInputChange(event) {
     this.setState({
       ...this.state,
-      title: event.target.value
+      title: event.target.value,
     });
   }
   nameInputChange(event) {
@@ -82,7 +83,7 @@ class Title extends Component {
   departmentInputChange(event) {
     this.setState({
       ...this.state,
-      department: event.target.value
+      department: event.target.value,
     });
   }
 
@@ -91,8 +92,11 @@ class Title extends Component {
       // this.getData();
       // this.setData();
 
-      console.log(this.postData);
-      setData(this.postData);
+      // console.log(this.postData);
+      // setData(this.postData);
+
+      console.log(this.state);
+      setData(this.state);
       this.setState({
         ...this.state,
         isInput: false
@@ -167,6 +171,7 @@ class Title extends Component {
             placeholder="Department"
             value={this.state.department}
           />
+          <remove/>
           <span
             onClick={() => this.postData()}
             className="ml-auto edit-icon"
@@ -178,6 +183,7 @@ class Title extends Component {
     } else {
       output = (
         <div className="d-flex Title">
+          
           <p className="display-4"> {this.state.title} </p>
           <p className="display-4"> {this.state.name} </p>
           <p className="display-4"> {this.state.mail} </p>

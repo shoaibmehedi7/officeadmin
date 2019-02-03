@@ -10,6 +10,7 @@ var postData = {
 };
 
 function setData(postData) {
+  console.log(postData);
   db.collection("users")
     .doc(postData.phone)
     .set(postData)

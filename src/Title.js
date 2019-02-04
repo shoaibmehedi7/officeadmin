@@ -89,14 +89,8 @@ class Title extends Component {
 
   keyPressHandler(event) {
     if (event.key === "Enter") {
-      // this.getData();
-      // this.setData();
-
-      // console.log(this.postData);
-      // setData(this.postData);
-
-      console.log(this.state);
-      setData(this.state);
+      var modData = removePeople(this.state);
+      setData(modData);
       this.setState({
         ...this.state,
         isInput: false
@@ -110,10 +104,9 @@ class Title extends Component {
   //       isInput: false
   //     });
   //   }
-
+  
   render() {
     let output = null;
-
     if (this.state.isInput) {
       output = (
         <div className="Title">
@@ -171,19 +164,11 @@ class Title extends Component {
             placeholder="Department"
             value={this.state.department}
           />
-          <remove/>
-          <span
-            onClick={() => this.postData()}
-            className="ml-auto edit-icon"
-          >
-            <i className="fas fa-pencil-alt" />
-          </span>
         </div>
       );
     } else {
       output = (
         <div className="d-flex Title">
-          
           <p className="display-4"> {this.state.title} </p>
           <p className="display-4"> {this.state.name} </p>
           <p className="display-4"> {this.state.mail} </p>
@@ -199,9 +184,7 @@ class Title extends Component {
         </div>
       );
     }
-
     return <div>{output}</div>;
   }
 }
-
 export default Title;

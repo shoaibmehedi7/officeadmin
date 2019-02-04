@@ -11,9 +11,9 @@ var config = {
 firebase.initializeApp(config);
 var db = firebase.firestore();
 
-db.settings({
-  timestampsInSnapshots: true
-});
+// db.settings({
+//   timestampsInSnapshots: true
+// });
 
 
 //fetch data from firestore

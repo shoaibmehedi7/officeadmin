@@ -1,11 +1,14 @@
-function removePeople() {
-  // var array = [...this.state.people]; // make a separate copy of the array
-  // var index = array.indexOf(e.target.value)
-  // if (index !== -1) {
-  //   array.splice(index, 1);
-  //   this.setState({ people: array });
-  // }
-  return 1;
+function removePeople(demo) {
+  var mofifiedData = {
+    title: demo.title,
+    name: demo.name,
+    mail: demo.mail,
+    phone: demo.phone,
+    designation: demo.designation,
+    department: demo.department
+  };
+  // return mofifiedData;
+  return mofifiedData;
 }
 
 export {removePeople}
